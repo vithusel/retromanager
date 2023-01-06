@@ -32,19 +32,20 @@ is_root() {
 root_check() {
 if ! is_root
 then
-    msg_box "Sorry, you are not root. You now have two options:
-
-1. Use SUDO directly:
-   a) :~$ sudo bash $SCRIPTS/name-of-script.sh
-
-2. Become ROOT and then type your command:
-   a) :~$ sudo -i
-   b) :~# bash $SCRIPTS/name-of-script.sh
-
+    msg_box "Sorry, you are not root. You now have two options:"
+result=$(echo 
+1. Use SUDO directly: ;
+   a) :~$ sudo bash $SCRIPTS/name-of-script.sh ;
+;
+2. Become ROOT and then type your command:;
+   a) :~$ sudo -i;
+   b) :~# bash $SCRIPTS/name-of-script.sh;
+;
 In both cases above you can leave out $SCRIPTS/ if the script
-is directly in your PATH.
+is directly in your PATH.;
 
-More information can be found here: https://unix.stackexchange.com/a/3064"
+More information can be found here: https://unix.stackexchange.com/a/3064)
     exit 1
 fi
 }
+
