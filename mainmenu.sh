@@ -7,6 +7,9 @@ DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
 
+#Root Check
+root_check
+
 while true; do
   exec 3>&1
   selection=$(dialog \
