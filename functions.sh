@@ -65,15 +65,11 @@ exit 1
 fi
 }
 
-#Check for os updates
-os_update() {
-apt update
-}
-
 # View availible Updates
 view_update() {
-result=$(apt list —upgradable)
+result=$(tail updatetemp.txt)
 display_tail "Availible Updates"
+rm updatetemp.txt
 }
 
 # Install Updates

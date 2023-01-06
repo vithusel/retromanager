@@ -33,9 +33,10 @@ while true; do
   esac
   case $selection in
     C )
-      os_update
+      apt update
       ;;
     U )
+      apt list --upgradable > updatetemp.txt
       view_update
       ;;
     N )
