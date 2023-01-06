@@ -24,7 +24,7 @@ display_result() {
 display_tail() {
   dialog --title "$1" \
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
-    --progressbox "$result" 0 0 
+    --tailboxbg "$result" 0 0 
 }
 
 # root test function
