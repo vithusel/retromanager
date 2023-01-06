@@ -68,7 +68,7 @@ fi
 
 # View availible Updates
 view_update() {
-result=$(echo $pendingupdates)
+result=$(echo "$pendingupdates")
 display_result "Availible Updates"
 }
 
