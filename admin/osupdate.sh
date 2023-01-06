@@ -36,7 +36,8 @@ while true; do
       apt update
       ;;
     U )
-      view_update
+      result=$(echo "$pendingupdates")
+      display_result "Availible Updates"
       ;;
     N )
       install_update

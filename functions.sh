@@ -66,12 +66,6 @@ exit 1
 fi
 }
 
-# View availible Updates
-view_update() {
-result=$(echo "$pendingupdates")
-display_result "Availible Updates"
-}
-
 # Install Updates
 install_update() {
 result=$(apt upgrade -y)
