@@ -27,6 +27,9 @@ display_gauge() {
     --gauge "$result" 0 0 
 }
 
+display_empty() {
+  dialog --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk"}
+
 # root test function
 is_root() {
     if [[ "$EUID" -ne 0 ]]
@@ -111,34 +114,11 @@ run_sudo() {
     printf "%s\n" "$SUDO_PASSWORD" \
         | LANG= sudo -S "$@" 2>> $STDERR \
         | $progression \
-        | run_dialog --gauge "$title" 0 80 0
+        | display_empty --gauge "$title" 0 80 0
 
     if [ "${PIPESTATUS[1]}" -ne 0 ]
     then
         run_dialog --tailbox "$STDERR" 25 80
         exit 1
     fi
-}
-
-# Run a dialog command. If the command has a return code not set to 0, it
-# directly exits the current script.
-#
-# Global variables:
-# - APPLICATION: the application title, will be written in background of screen
-# - DIALOG_VALUES: this array will contain the value the user has input
-function run_dialog() {
-    local temporary_file=$(mktemp)
-    local rc=0
-
-    dialog --backtitle "$APPLICATION" "$@" 2> "$temporary_file"
-    rc=$?
-
-    readarray -t DIALOG_VALUES < "$temporary_file"
-    rm -- "$temporary_file"
-
-    if [ $rc -ne 0 ]
-    then
-        dialog --backtitle "$APPLICATION" --msgbox "Script aborted" 5 50
-        exit 1
-    fi        
 }
