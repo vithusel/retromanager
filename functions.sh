@@ -69,3 +69,21 @@ exit 1
     
 fi
 }
+
+#Check for os updates
+os_update() {
+result=$(apt update)
+display_result "Check for OS Updates"
+}
+
+# View availible Updates
+view_update() {
+result=$(apt list —upgradable)
+display_result "Availible Updates"
+}
+
+# Install Updates
+install_update() {
+result=$(apt upgrade -y)
+display_result "Installing Updates"
+}

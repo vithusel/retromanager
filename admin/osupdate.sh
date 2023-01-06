@@ -33,21 +33,13 @@ while true; do
   esac
   case $selection in
     C )
-      result=$(apt update)
-      display_result "Disk Space"
+      os_update
       ;;
     U )
-      result=$(df -h)
-      display_result "Disk Space"
+      view_update
       ;;
     N )
-      if [[ $(id -u) -eq 0 ]]; then
-        result=$(du -sh /home/* 2> /dev/null)
-        display_result "Home Space Utilization (All Users)"
-      else
-        result=$(du -sh $HOME 2> /dev/null)
-        display_result "Home Space Utilization ($USER)"
-      fi
+      install_update
       ;;
   esac
 done
