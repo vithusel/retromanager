@@ -18,7 +18,7 @@ while true; do
     "1" "System Information" \
     "2" "Update System" \
     "3" "View Storage Usage" \
-    "4" "System Service Management" \
+    "4" "System Service Management (LAMP)" \
     "5" "TBC" \
     2>&1 1>&3)
   exit_status=$?
@@ -38,7 +38,7 @@ while true; do
   case $selection in
     1 )
       result=$(echo "Hostname: $HOSTNAME"; uptime)
-      display_result "System Information"
+      root_check
       ;;
     2 )
       result=$(df -h)
