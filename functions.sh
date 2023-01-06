@@ -68,7 +68,7 @@ fi
 # View availible Updates
 view_update() {
 result=$(tail updatetemp.txt)
-display_tail "Availible Updates"
+display_result "Availible Updates"
 rm updatetemp.txt
 }
 
