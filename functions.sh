@@ -67,8 +67,7 @@ fi
 
 #Check for os updates
 os_update() {
-result=$(apt update)
-display_tail "Check for OS Updates"
+apt update
 }
 
 # View availible Updates
@@ -79,46 +78,7 @@ display_tail "Availible Updates"
 
 # Install Updates
 install_update() {
-apt_upgrade \
-dialog --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" --gauge "$1" 0 0 
+result=$(apt upgrade -y)
+display_tail "Installing Updates"
 }
 
-# A progression filter for apt-get.
-# This functions is meant to be used by the run and run_sudo functions.
-apt_upgrade() {
-    sed --quiet --unbuffered '
-        /Reading package lists/a15
-        /Reading state information/a30
-        /upgraded/a45
-        /Reading database/a60
-        /Preparing to unpack/a75
-        /Setting up/a90
-    '
-    echo 100
-}
-
-# Run a command with the root user.
-# Arguments:
-# - 1: title
-# - 2: progression function which converts command output to percentage
-# - 3-*: command to execute
-#
-# Global variables:
-# - SUDO_PASSWORD: the sudo password
-# - STDERR: the file receiving the standard error stream
-run_sudo() {
-    local title="$1"
-    local progression="$2"
-    shift 2
-
-    printf "%s\n" "$SUDO_PASSWORD" \
-        | LANG= sudo -S "$@" 2>> $STDERR \
-        | $progression \
-        | display_empty --gauge "$title" 0 80 0
-
-    if [ "${PIPESTATUS[1]}" -ne 0 ]
-    then
-        run_dialog --tailbox "$STDERR" 25 80
-        exit 1
-    fi
-}
