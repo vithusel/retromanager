@@ -1,9 +1,6 @@
 # Retro Manager © - 2023, https://vithuselservices.co.uk
 
 
-
-
-
 # VARIABLES
 #Get Script name and path
 script_name=`basename $0`
@@ -47,7 +44,8 @@ In both cases above you can leave out $script_path/ if the script
 is directly in your PATH.
 
 More information can be found here: https://unix.stackexchange.com/a/3064")
-display_result "System Information"
+display_result "Elevate Script Privledge"
+exit 1
     
 fi
 }
