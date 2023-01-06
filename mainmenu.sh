@@ -40,7 +40,7 @@ while true; do
   esac
   case $selection in
     1 )
-      result=$(echo System Name: $HOSTNAME; IP Address: "hostname -i | awk '{print $3}'"  )
+      result=$(echo System Name: $HOSTNAME \n IP Address (local): $localip  )
       display_result "System Information"
       ;;
     2 )

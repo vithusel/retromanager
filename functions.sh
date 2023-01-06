@@ -6,6 +6,7 @@
 script_name=`basename $0`
 script_path=$(dirname $(readlink -f $0))
 script_path_with_name="$script_path/$script_name"
+localip=($(hostname -I))
 
 
 # FUNCTIONS
