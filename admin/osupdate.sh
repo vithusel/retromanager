@@ -39,9 +39,7 @@ while true; do
       view_update
       ;;
     N )
-      run_sudo "Installing Git" \
-      apt_upgrade \
-      apt-get upgrade -y 
+      install_update
       ;;
   esac
 done

@@ -79,8 +79,8 @@ display_tail "Availible Updates"
 
 # Install Updates
 install_update() {
-result=$(apt upgrade -y)
-display_tail "Installing Updates"
+apt_upgrade \
+dialog --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" --gauge "$1" 0 0 
 }
 
 # A progression filter for apt-get.
