@@ -37,7 +37,7 @@ while true; do
   esac
   case $selection in
     1 )
-      result=$(echo "Hostname: $HOSTNAME"; uptime)
+      result=$(root_check)
       display_result "System Information"
       ;;
     2 )

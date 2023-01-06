@@ -7,3 +7,23 @@ display_result() {
     --no-collapse \
     --msgbox "$result" 0 0
 }
+
+# Check if root
+root_check() {
+if ! is_root
+then
+    echo "Sorry, you are not root. You now have two options:
+
+1. Use SUDO directly:
+   a) :~$ sudo bash $SCRIPTS/name-of-script.sh
+
+2. Become ROOT and then type your command:
+   a) :~$ sudo -i
+   b) :~# bash $SCRIPTS/name-of-script.sh
+
+In both cases above you can leave out $SCRIPTS/ if the script
+is directly in your PATH.
+
+More information can be found here: https://unix.stackexchange.com/a/3064"
+fi
+}
