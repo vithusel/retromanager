@@ -11,7 +11,7 @@ while true; do
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
     --title "Update OS" \
     --clear \
-    --cancel-label "Exit" \
+    --cancel-label "Back" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
     "C" "Check for update" \
     "U" "View Availible Updates" \
@@ -40,7 +40,7 @@ while true; do
       display_result "Availible Updates"
       ;;
     N )
-      install_update
+      apt upgrade -y
       ;;
   esac
 done
