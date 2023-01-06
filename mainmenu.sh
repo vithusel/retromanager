@@ -18,11 +18,11 @@ while true; do
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
-    "1" "System Information" \
-    "2" "Update System" \
-    "3" "View Storage Usage" \
-    "4" "System Service Management (LAMP)" \
-    "5" "TBC" \
+    "C" "System Information" \
+    "U" "Update System" \
+    "N" "View Storage Usage" \
+    "T" "System Service Management (LAMP)" \
+    "S" "TBC" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -39,15 +39,15 @@ while true; do
       ;;
   esac
   case $selection in
-    1 )
+    C )
       result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
       display_result "System Information"
       ;;
-    2 )
+    U )
       result=$(df -h)
       display_result "Disk Space"
       ;;
-    3 )
+    N )
       if [[ $(id -u) -eq 0 ]]; then
         result=$(du -sh /home/* 2> /dev/null)
         display_result "Home Space Utilization (All Users)"
