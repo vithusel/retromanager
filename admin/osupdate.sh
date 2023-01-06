@@ -13,11 +13,9 @@ while true; do
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
-    "C" "System Information" \
-    "U" "Update System" \
-    "N" "View Storage Usage" \
-    "T" "System Service Management (LAMP)" \
-    "S" "TBC" \
+    "C" "Check for update" \
+    "U" "View Availible Updates" \
+    "N" "Install Updates" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -35,8 +33,8 @@ while true; do
   esac
   case $selection in
     C )
-      result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
-      display_result "System Information"
+      result=$(apt update)
+      display_result "Disk Space"
       ;;
     U )
       result=$(df -h)

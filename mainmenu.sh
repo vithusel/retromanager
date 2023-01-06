@@ -40,7 +40,7 @@ while true; do
       display_result "System Information"
       ;;
     U )
-      chmod +x admin/opupdate.sh
+      chmod +x admin/osupdate.sh
       ./admin/osupdate.sh
       ;;
     N )
