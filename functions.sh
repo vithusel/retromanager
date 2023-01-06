@@ -12,6 +12,7 @@ script_path_with_name="$script_path/$script_name"
 
 display_result() {
   dialog --title "$1" \
+    --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
     --no-collapse \
     --msgbox "$result" 0 0
 }
