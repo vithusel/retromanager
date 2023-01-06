@@ -8,6 +8,23 @@ display_result() {
     --msgbox "$result" 0 0
 }
 
+# Whiptail auto-size
+calc_wt_size() {
+    WT_HEIGHT=17
+    WT_WIDTH=$(tput cols)
+
+    if [ -z "$WT_WIDTH" ] || [ "$WT_WIDTH" -lt 60 ]; then
+        WT_WIDTH=80
+    fi
+    if [ "$WT_WIDTH" -gt 178 ]; then
+        WT_WIDTH=120
+    fi
+    WT_MENU_HEIGHT=$((WT_HEIGHT-7))
+    export WT_MENU_HEIGHT
+}
+
+msgbox() {whiptail --title "$1" --msgbox "$2" "$WT_HEIGHT" "$WT_WIDTH" 3>&1 1>&2 2>&3
+}
 # If script is running as root?
 #
 # Example:
@@ -33,8 +50,8 @@ root_check() {
 if ! is_root
 then
     msg_box "Sorry, you are not root. You now have two options:"
-result=$(echo 
-1. Use SUDO directly: ;
+ 
+"1. Use SUDO directly: ;
    a) :~$ sudo bash $SCRIPTS/name-of-script.sh ;
 ;
 2. Become ROOT and then type your command:;
@@ -44,7 +61,7 @@ result=$(echo
 In both cases above you can leave out $SCRIPTS/ if the script
 is directly in your PATH.;
 
-More information can be found here: https://unix.stackexchange.com/a/3064)
+More information can be found here: https://unix.stackexchange.com/a/3064"
     exit 1
 fi
 }
