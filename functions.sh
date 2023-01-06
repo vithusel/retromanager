@@ -21,18 +21,10 @@ display_result() {
     --msgbox "$result" 0 0
 }
 
-display_menu() {
+display_tail() {
   dialog --title "$1" \
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
-    --clear \
-    --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 4 \
-    "1" "System Information" \
-    "2" "Update System" \
-    "3" "View Storage Usage" \
-    "4" "System Service Management (LAMP)" \
-    "5" "TBC" \
-    2>&1 1>&3
+    --progressbox "$result" 0 0 
 }
 
 # root test function
@@ -73,17 +65,17 @@ fi
 #Check for os updates
 os_update() {
 result=$(apt update)
-display_result "Check for OS Updates"
+display_tail "Check for OS Updates"
 }
 
 # View availible Updates
 view_update() {
 result=$(apt list —upgradable)
-display_result "Availible Updates"
+display_tail "Availible Updates"
 }
 
 # Install Updates
 install_update() {
 result=$(apt upgrade -y)
-display_result "Installing Updates"
+display_tail "Installing Updates"
 }
