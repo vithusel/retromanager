@@ -27,7 +27,7 @@ display_menu() {
     "3" "View Storage Usage" \
     "4" "System Service Management (LAMP)" \
     "5" "TBC" \
-    2>&1 1>&3)
+    2>&1 1>&3
 }
 
 # root test function
