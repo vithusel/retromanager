@@ -38,7 +38,7 @@ while true; do
   case $selection in
     1 )
       result=$(echo "Hostname: $HOSTNAME"; uptime)
-      root_check
+      display_result "System Information"
       ;;
     2 )
       result=$(df -h)
