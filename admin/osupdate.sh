@@ -3,19 +3,18 @@
 # Retro Manager © - 2023, https://vithuselservices.co.uk
 source functions.sh
 
-#Root Check
-root_check
+apt update
 
 while true; do
   exec 3>&1
   selection=$(dialog \
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
-    --title "Main Menu" \
+    --title "Update OS" \
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
     "C" "System Information" \
-    "U" "Update OS" \
+    "U" "Update System" \
     "N" "View Storage Usage" \
     "T" "System Service Management (LAMP)" \
     "S" "TBC" \
@@ -40,8 +39,8 @@ while true; do
       display_result "System Information"
       ;;
     U )
-      chmod +x admin/opupdate.sh
-      ./admin/osupdate.sh
+      result=$(df -h)
+      display_result "Disk Space"
       ;;
     N )
       if [[ $(id -u) -eq 0 ]]; then
