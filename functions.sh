@@ -8,6 +8,15 @@ display_result() {
     --msgbox "$result" 0 0
 }
 
+is_root() {
+    if [[ "$EUID" -ne 0 ]]
+    then
+        return 1
+    else
+        return 0
+    fi
+}
+
 # Check if root
 root_check() {
 if ! is_root
