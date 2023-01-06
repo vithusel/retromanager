@@ -16,6 +16,13 @@ display_result() {
     --msgbox "$result" 0 0
 }
 
+display_menu() {
+  dialog --title "$1" \
+    --no-collapse \
+    --cancel-label "Exit" \
+    --msgbox "$result" 0 0
+}
+
 # root test function
 is_root() {
     if [[ "$EUID" -ne 0 ]]
