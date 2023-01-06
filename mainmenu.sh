@@ -40,7 +40,7 @@ while true; do
   esac
   case $selection in
     1 )
-      result=$(echo System Name: $HOSTNAME \n IP Address (local): $localip  )
+      result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
       display_result "System Information"
       ;;
     2 )
