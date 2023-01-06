@@ -18,9 +18,16 @@ display_result() {
 
 display_menu() {
   dialog --title "$1" \
-    --no-collapse \
+    --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
+    --clear \
     --cancel-label "Exit" \
-    --msgbox "$result" 0 0
+    --menu "Please select:" $HEIGHT $WIDTH 4 \
+    "1" "System Information" \
+    "2" "Update System" \
+    "3" "View Storage Usage" \
+    "4" "System Service Management (LAMP)" \
+    "5" "TBC" \
+    2>&1 1>&3)
 }
 
 # root test function
@@ -52,6 +59,7 @@ is directly in your PATH.
 
 More information can be found here: https://unix.stackexchange.com/a/3064")
 display_result "Elevate Script Privledge"
+clear
 exit 1
     
 fi
