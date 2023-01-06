@@ -119,3 +119,26 @@ run_sudo() {
         exit 1
     fi
 }
+
+# Run a dialog command. If the command has a return code not set to 0, it
+# directly exits the current script.
+#
+# Global variables:
+# - APPLICATION: the application title, will be written in background of screen
+# - DIALOG_VALUES: this array will contain the value the user has input
+function run_dialog() {
+    local temporary_file=$(mktemp)
+    local rc=0
+
+    dialog --backtitle "$APPLICATION" "$@" 2> "$temporary_file"
+    rc=$?
+
+    readarray -t DIALOG_VALUES < "$temporary_file"
+    rm -- "$temporary_file"
+
+    if [ $rc -ne 0 ]
+    then
+        dialog --backtitle "$APPLICATION" --msgbox "Script aborted" 5 50
+        exit 1
+    fi        
+}
