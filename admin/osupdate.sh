@@ -36,7 +36,6 @@ while true; do
       apt update
       ;;
     U )
-      apt list --upgradable > updatetemp.txt
       view_update
       ;;
     N )

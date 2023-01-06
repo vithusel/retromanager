@@ -11,6 +11,7 @@ DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
+pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | /bin/grep  ^Inst | wc -l`
 
 # FUNCTIONS
 
@@ -67,9 +68,8 @@ fi
 
 # View availible Updates
 view_update() {
-result=$(tail updatetemp.txt)
+result=$(echo $pendingupdates)
 display_result "Availible Updates"
-rm updatetemp.txt
 }
 
 # Install Updates
