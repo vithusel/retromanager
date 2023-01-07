@@ -32,11 +32,6 @@ display_consent() {
 # 1 means user hit [no] button.
 # 255 means user hit [Esc] key.
 response=$?
-case $response in
-   0) echo "File deleted.";;
-   1) echo "File not deleted.";;
-   255) echo "[ESC] key pressed.";;
-esac
 if [ "$response" == "0" ]; then
     echo "Installing"
 else
@@ -90,6 +85,6 @@ display_tail "Installing Updates"
 install_if_not() {
 if ! dpkg-query -W -f='${Status}' "${1}" | grep -q "ok installed"
 then
-    apt-get update -q4 & spinner_loading && RUNLEVEL=1 apt-get install "${1}" -y
+    apt-get update -q4 & apt-get install "${1}" -y
 fi
 }
