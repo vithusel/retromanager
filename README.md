@@ -12,7 +12,15 @@ This is aimed at newbies who want to run day to day maintainance work but keep f
 
 ## Installation
 
-To make it easy for you to get started you can run bash .......
+To make it easy for you to get started you can run 
+
+curl -sSL https://git.vithusel.me/vithusel/retromanager/-/raw/main/install.sh | bash
+
+This will perform a automated installation.
+
+## Updating
+
+Updates to the Retromanager can be performed via the main menu
 
 ## Roadmap
 
