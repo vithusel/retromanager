@@ -12,6 +12,9 @@ HEIGHT=0
 WIDTH=0
 pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | /bin/grep  ^Inst | wc -l`
 
+#Repo Variables
+mainrepo=https://git.vithusel.me/vithusel/retromanager.git
+
 # FUNCTIONS
 
 display_result() {
@@ -87,4 +90,8 @@ if ! dpkg-query -W -f='${Status}' "${1}" | grep -q "ok installed"
 then
     apt-get update -q4 & apt-get install "${1}" -y
 fi
+}
+
+clone_repo() {
+    git clone
 }
