@@ -1,6 +1,5 @@
 # Retro Manager © - 2023, https://vithuselservices.co.uk
 
-
 # VARIABLES
 #Get Script name and path
 script_name=`basename $0`
@@ -27,9 +26,6 @@ display_gauge() {
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
     --gauge "$result" 0 0 
 }
-
-display_empty() {
-  dialog --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk"}
 
 # root test function
 is_root() {
@@ -67,8 +63,7 @@ fi
 }
 
 # Install Updates
-install_update() {
-result=$(apt upgrade -y)
-display_tail "Installing Updates"
-}
-
+#install_update() {
+#result=$(apt upgrade -y)
+#display_tail "Installing Updates"
+#}
