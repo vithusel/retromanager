@@ -10,11 +10,14 @@ else
     apt-get install curl -y
 fi
 
+rm functions.sh
+
 wget https://git.vithusel.me/vithusel/retromanager/-/raw/main/functions.sh
 
 source functions.sh
 
 install_if_not dialog
+install_if_not git
 
         consent=$(echo Prior to install this. Please ensure you have read the terms of use on the readme. This software is in beta)
         display_consent 

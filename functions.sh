@@ -93,5 +93,5 @@ fi
 }
 
 clone_repo() {
-    git clone
+    git clone $1
 }
