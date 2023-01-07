@@ -21,10 +21,28 @@ display_result() {
     --msgbox "$result" 0 0
 }
 
-display_gauge() {
-  dialog --title "$1" \
+display_consent() {
+  dialog --title "Consent Screen" \
     --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
-    --gauge "$result" 0 0 
+    --no-collapse \
+    --yesno "$consent" 7 60
+
+# Get exit status
+# 0 means user hit [yes] button.
+# 1 means user hit [no] button.
+# 255 means user hit [Esc] key.
+response=$?
+case $response in
+   0) echo "File deleted.";;
+   1) echo "File not deleted.";;
+   255) echo "[ESC] key pressed.";;
+esac
+if [ "$response" == "0" ]; then
+    echo "Installing"
+else
+    echo "Cancelling Install"
+    exit 1
+fi
 }
 
 # root test function
@@ -63,7 +81,15 @@ fi
 }
 
 # Install Updates
-#install_update() {
-#result=$(apt upgrade -y)
-#display_tail "Installing Updates"
-#}
+install_update() {
+result=$(apt upgrade -y)
+display_tail "Installing Updates"
+}
+
+# Install_if_not program
+install_if_not() {
+if ! dpkg-query -W -f='${Status}' "${1}" | grep -q "ok installed"
+then
+    apt-get update -q4 & spinner_loading && RUNLEVEL=1 apt-get install "${1}" -y
+fi
+}
