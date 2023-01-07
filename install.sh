@@ -18,3 +18,5 @@ install_if_not dialog
 
         consent=$(echo Prior to install this. Please ensure you have read the terms of use on the readme. This software is in beta)
         display_consent 
+
+clone_repo $mainrepo
