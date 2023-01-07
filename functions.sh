@@ -33,9 +33,9 @@ display_consent() {
 # 255 means user hit [Esc] key.
 response=$?
 if [ "$response" == "0" ]; then
-    echo "Installing"
+    echo "Accepted"
 else
-    echo "Cancelling Install"
+    echo "Consent Rejected"
     exit 1
 fi
 }
