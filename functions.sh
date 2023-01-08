@@ -78,6 +78,28 @@ exit 1
 fi
 }
 
+# Current session user root check
+install_complete() {
+result=$(echo "Install Complete
+
+To run Retromanager please launch mainmenu.sh using the instructions below
+
+1. Use SUDO directly:
+   a) :~$ sudo bash $script_path/mainmenu.sh
+
+2. Become ROOT and then type your command:
+   a) :~$ sudo -i
+   b) :~# bash $script_path/mainmenu.sh
+
+In both cases above you can leave out $script_path/ if the script
+is directly in your PATH.
+
+More information can be found here: https://unix.stackexchange.com/a/3064")
+display_result "Elevate Script Privledge"
+clear
+exit 1
+}
+
 # Install Updates
 install_update() {
 result=$(apt upgrade -y)
