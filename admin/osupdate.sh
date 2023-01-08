@@ -22,7 +22,7 @@ while true; do
   case $exit_status in
     $DIALOG_CANCEL)
       clear
-      echo "Program terminated."
+      echo "Going to main menu"
       exit
       ;;
     $DIALOG_ESC)

@@ -23,3 +23,17 @@ install_if_not git
         display_consent 
 
 clone_repo $mainrepo
+
+echo ls
+ls
+
+sudo chown -R "${USER:=$(/usr/bin/id -run)}:$USER" retromanager
+
+cd retromanager
+
+echo ls
+ls
+
+chmod +x complete-install.sh
+
+./complete-install.sh
