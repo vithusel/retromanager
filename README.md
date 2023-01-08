@@ -31,6 +31,7 @@ Short Term Goals -
 5. Built in update function 
 6. Break functions into seperate repo to allow centralised functions list 
 7. Improve click support. Look at options other then Dialog.
+8. Add very basic versioning support
 
 Long Term Goals - 
 1. Auto configuration - Retro Manager will scan your system to see what services are installed and automatically provide management options for those applications
@@ -38,7 +39,10 @@ Long Term Goals -
 3. Server backup and restoration (with the use of some configuration file)
 4. Webhook support for sending alerts about completed tasks 
 5. Database Management 
-6. More to come
+6. Add smart versioning support
+7. Implement smart auto update 
+8. Implement smart auto management (auto update specific packages, pull code, TBC)
+9. More to come
 
 ## Notice to users
 Until otherwise mentioned on this repo. This software is in beta. 
