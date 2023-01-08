@@ -14,6 +14,8 @@ rm functions.sh
 
 wget https://git.vithusel.me/vithusel/retromanager/-/raw/main/functions.sh
 
+root_check
+
 source functions.sh
 
 install_if_not dialog

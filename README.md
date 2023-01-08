@@ -14,7 +14,7 @@ This is aimed at newbies who want to run day to day maintainance work but keep f
 
 To make it easy for you to get started you can run 
 
-curl -sSL https://git.vithusel.me/vithusel/retromanager/-/raw/main/install.sh | bash
+sudo curl -sSL https://git.vithusel.me/vithusel/retromanager/-/raw/main/install.sh | bash
 
 This will perform a automated installation.
 
