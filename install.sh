@@ -26,6 +26,8 @@ install_if_not git
 
 clone_repo $mainrepo
 
+rm functions.sh
+
 echo ls
 ls
 
