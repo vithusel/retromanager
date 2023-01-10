@@ -56,10 +56,10 @@ while true; do
       display_result "System Information"
       ;;
       S )
-        consent=$(echo RetroManager is about to update itself)
+        result=$(echo RetroManager is about to update itself)
         display_result "RetroManager Update"
-        pull_repo
-        consent=$(echo Update Complete)
+        git pull
+        result=$(echo Update Complete)
         display_result "RetroManager Update"
       ;;
   esac

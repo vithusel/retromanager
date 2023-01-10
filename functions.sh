@@ -117,7 +117,3 @@ fi
 clone_repo() {
     git clone $1
 }
-
-pull_repo() {
-    git pull
-}
