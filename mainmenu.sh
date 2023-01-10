@@ -56,7 +56,7 @@ while true; do
       display_result "System Information"
       ;;
       S )
-      chmod +x /scripts/selfupdate.sh
+      chmod +x scripts/selfupdate.sh
       ./scripts/selfupdate.sh
       ;;
   esac
