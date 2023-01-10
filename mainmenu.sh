@@ -56,8 +56,11 @@ while true; do
       display_result "System Information"
       ;;
       S )
-      chmod +x scripts/selfupdate.sh
-      ./scripts/selfupdate.sh
+        consent=$(echo RetroManager is about to update itself)
+        display_result "RetroManager Update"
+        pull_repo
+        consent=$(echo Update Complete)
+        display_result "RetroManager Update"
       ;;
   esac
 done
