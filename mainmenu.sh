@@ -44,10 +44,10 @@ while true; do
       ;;
     N )
       if [[ $(id -u) -eq 0 ]]; then
-        result=$(du -sh /home/* 2> /dev/null)
+        result=$(du -sh /home/* 2> /dev/null; du -sh /mnt/* 2> /dev/null)
         display_result "Home Space Utilization (All Users)"
       else
-        result=$(du -sh $HOME 2> /dev/null)
+        result=$(du -sh $HOME 2> /dev/null; du -sh /mnt/* 2> /dev/null)
         display_result "Home Space Utilization ($USER)"
       fi
       ;;
