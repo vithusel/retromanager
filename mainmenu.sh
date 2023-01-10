@@ -17,7 +17,7 @@ while true; do
     "U" "Update OS" \
     "N" "View Storage Usage" \
     "T" "System Service Management (LAMP)" \
-    "S" "TBC" \
+    "S" "Update RetroManager" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -50,6 +50,14 @@ while true; do
         result=$(du -sh $HOME 2> /dev/null)
         display_result "Home Space Utilization ($USER)"
       fi
+      ;;
+      T )
+      result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
+      display_result "System Information"
+      ;;
+      S )
+      chmod +x selfupdate.sh
+      ./scripts/selfupdate.sh
       ;;
   esac
 done
