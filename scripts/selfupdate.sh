@@ -8,11 +8,11 @@ source functions.sh
 install_if_not dialog
 install_if_not git
 
-        consent=$(echo RetroManager is about to update itself)
+        result=$(echo RetroManager is about to update itself)
         display_result "RetroManager Update"
 
 pull_repo
 
-        consent=$(echo Update Complete)
+        result=$(echo Update Complete)
         display_result "RetroManager Update"
 
