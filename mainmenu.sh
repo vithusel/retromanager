@@ -12,7 +12,7 @@ while true; do
     --title "Main Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 4 \
+    --menu "Please select:" $HEIGHT $WIDTH 6 \
     "C" "System Information" \
     "U" "Update OS" \
     "N" "View Storage Usage" \
