@@ -140,13 +140,3 @@ spruce_type=$2
 download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
 wget -O $tmp/$3 $download_url
 }
-
-install_release() {
-
-
-
-
-# Github Release Downloader
-release_download() {
-
-}
