@@ -122,7 +122,7 @@ clone_repo() {
 
 # Github Release Downloader
 download_release() {
-spruce_type=linux_amd64
+spruce_type=$2
 download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
 wget -O $tmp/frp.tar.gz $download_url
 }
