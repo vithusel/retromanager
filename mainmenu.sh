@@ -63,6 +63,7 @@ while true; do
     6 )
         result=$(echo RetroManager is about to update itself)
         display_result "RetroManager Update"
+        git reset --hard
         git pull
         result=$(echo Update Complete)
         display_result "RetroManager Update"
