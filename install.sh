@@ -12,7 +12,7 @@ fi
 
 rm functions.sh
 
-wget https://git.vithusel.me/vithusel/retromanager/-/raw/main/functions.sh
+wget https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/functions.sh
 
 root_check
 
