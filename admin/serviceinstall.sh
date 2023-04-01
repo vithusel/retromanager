@@ -32,14 +32,14 @@ while true; do
       ;;
   esac
   case $selection in
-    C )
+    1 )
       apt update
       ;;
-    U )
+    2 )
       result=$(echo "$pendingupdates")
       display_result "Availible Updates"
       ;;
-    N )
+    3 )
       apt upgrade -y
       ;;
   esac
