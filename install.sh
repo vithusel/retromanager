@@ -14,6 +14,8 @@ rm functions.sh
 
 wget https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/functions.sh
 
+sudo chmod +x functions.sh
+
 root_check
 
 source functions.sh
