@@ -12,6 +12,8 @@ HEIGHT=0
 WIDTH=0
 pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | /bin/grep  ^Inst | wc -l`
 gofrprepo=https://api.github.com/repos/fatedier/frp/releases/latest
+gofrptype=linux_amd64
+spruce_type=$2
 tmp=/tmp
 
 #Repo Variables
@@ -120,14 +122,8 @@ clone_repo() {
     git clone $1
 }
 
-# GoFRP Installer
-download_gofrp() {
-spruce_type=linux_amd64
-download_url=$(curl -s $gofrprepo | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
-wget -O $tmp/frp.tar.gz $download_url
-}
-
 # Github Release Downloader
-release_download() {
-
+download_release() {
+download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
+wget -O $tmp/$3 $download_url
 }
