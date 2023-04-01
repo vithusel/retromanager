@@ -13,11 +13,11 @@ while true; do
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 6 \
-    "C" "System Information" \
-    "U" "Update OS" \
-    "N" "View Storage Usage" \
-    "T" "System Service Management (LAMP)" \
-    "S" "Update RetroManager" \
+    "1" "System Information" \
+    "2" "Update OS" \
+    "3" "View Storage Usage" \
+    "4" "System Service Management (LAMP)" \
+    "5" "Update RetroManager" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
