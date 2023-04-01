@@ -38,6 +38,7 @@ while true; do
     2 )
       consent=$(echo Do you have a AMD64 Machine?)
       display_consent 
+      download_gofrp
       ;;
     3 )
       apt upgrade -y
