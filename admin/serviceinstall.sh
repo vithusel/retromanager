@@ -36,18 +36,8 @@ while true; do
       apt update
       ;;
     2 )
-      application=GoFRP
-      consent=$(echo Do you have a AMD64 Machine?)
-      display_consent 
-      download_release $gofrprepo linux_amd64 frp.tar.gz
-      message=$(echo Will this be the $application server?)
-      display_apphostserver 
-   case $response in
-      0 )
-      echo installing GoFRP Server
-      1 )
-      echo installing GoFRP Client
-   esac
+      chmod +x installers/gofrp.sh
+      ./installers/gofrp.sh
       ;;
     3 )
       apt upgrade -y
