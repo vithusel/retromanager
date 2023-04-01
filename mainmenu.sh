@@ -16,8 +16,9 @@ while true; do
     "1" "System Information" \
     "2" "Update OS" \
     "3" "View Storage Usage" \
-    "4" "System Service Management (LAMP)" \
-    "5" "Update RetroManager" \
+    "4" "Install Services/Applications" \
+    "5" "System Service Management (LAMP)" \
+    "6" "Update RetroManager" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -56,6 +57,10 @@ while true; do
       display_result "System Information"
       ;;
     5 )
+      result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
+      display_result "System Information"
+      ;;
+    6 )
         result=$(echo RetroManager is about to update itself)
         display_result "RetroManager Update"
         git pull
