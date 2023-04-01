@@ -12,6 +12,7 @@ HEIGHT=0
 WIDTH=0
 pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | /bin/grep  ^Inst | wc -l`
 gofrprepo=https://api.github.com/repos/fatedier/frp/releases/latest
+tmp=/tmp
 
 #Repo Variables
 mainrepo=https://git.vithuselservices.co.uk/vithusel/retromanager.git
@@ -123,7 +124,7 @@ clone_repo() {
 download_gofrp() {
 spruce_type=linux_amd64
 download_url=$(curl -s $gofrprepo | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
-wget $download_url
+wget -O $tmp/frp.tar.gz $download_url
 }
 
 # Github Release Downloader
