@@ -34,15 +34,15 @@ while true; do
       ;;
   esac
   case $selection in
-    C )
+    1 )
       result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
       display_result "System Information"
       ;;
-    U )
+    2 )
       chmod +x admin/osupdate.sh
       ./admin/osupdate.sh
       ;;
-    N )
+    3 )
       if [[ $(id -u) -eq 0 ]]; then
         result=$(du -sh /home/* 2> /dev/null; df -h 2> /dev/null)
         display_result "Home Space Utilization (All Users)"
@@ -51,11 +51,11 @@ while true; do
         display_result "Home Space Utilization ($USER)"
       fi
       ;;
-      T )
+    4 )
       result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
       display_result "System Information"
       ;;
-      S )
+    5 )
         result=$(echo RetroManager is about to update itself)
         display_result "RetroManager Update"
         git pull
