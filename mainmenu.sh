@@ -53,8 +53,8 @@ while true; do
       fi
       ;;
     4 )
-      result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
-      display_result "System Information"
+      chmod +x admin/serviceinstall.sh
+      ./admin/serviceinstall.sh
       ;;
     5 )
       result=$(echo "System Name: $HOSTNAME"; echo "Local IP: $localip"; uptime)
