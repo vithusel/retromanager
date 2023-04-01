@@ -36,8 +36,8 @@ while true; do
       apt update
       ;;
     2 )
-      result=$(echo "$pendingupdates")
-      display_result "Availible Updates"
+      consent=$(echo Do you have a AMD64 Machine?)
+      display_consent 
       ;;
     3 )
       apt upgrade -y
