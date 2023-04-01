@@ -13,6 +13,7 @@ WIDTH=0
 pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | /bin/grep  ^Inst | wc -l`
 gofrprepo=https://api.github.com/repos/fatedier/frp/releases/latest
 tmp=/tmp
+backtitle="Retro Manager © - 2023, https://vithuselservices.co.uk"
 
 #Repo Variables
 mainrepo=https://git.vithuselservices.co.uk/vithusel/retromanager.git
@@ -21,14 +22,14 @@ mainrepo=https://git.vithuselservices.co.uk/vithusel/retromanager.git
 
 display_result() {
   dialog --title "$1" \
-    --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
+    --backtitle $backtitle \
     --no-collapse \
     --msgbox "$result" 0 0
 }
 
 display_consent() {
   dialog --title "Consent Screen" \
-    --backtitle "Retro Manager © - 2023, https://vithuselservices.co.uk" \
+    --backtitle $backtitle \
     --no-collapse \
     --yesno "$consent" 7 60
 
@@ -43,6 +44,19 @@ else
     echo "Consent Rejected"
     exit 1
 fi
+}
+
+display_apphostserver() {
+  dialog --title "Application Install" \
+    --backtitle $backtitle \
+    --no-collapse \
+    --yesno "$message" 7 60
+
+# Get exit status
+# 0 means user hit [yes] button.
+# 1 means user hit [no] button.
+# 255 means user hit [Esc] key.
+response=$?
 }
 
 # root test function
@@ -126,6 +140,9 @@ spruce_type=$2
 download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
 wget -O $tmp/$3 $download_url
 }
+
+install_release() {
+
 
 
 
