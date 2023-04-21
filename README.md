@@ -1,4 +1,8 @@
-# Retro Manager
+
+![Logo](https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/e80b7de95fbb830a89b78e73d9d654d8fddf289b/misc/retromanager.png)
+
+
+# RetroManager
 
 ## What is it? 
 
@@ -7,17 +11,17 @@ Add some retro flair to your workday by GUIing some terminal functions in your l
 This is aimed at newbies who want to run day to day maintainance work but keep forgetting the different commands.
 
 ## System Requirments
-- Ubuntu/Debian based OS
-
-
+- Ubuntu / Debian based OS
+- Root Access
+- Internet Access
 ## Installation
 
 To make it easy for you to get started you can run 
 
-sudo curl -sSL https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/install.sh | bash
-
-This will perform a automated installation.
-
+```bash
+  sudo curl -sSL https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/install.sh | bash
+```
+This will perform a automated installation.    
 ## Updating
 
 Updates to the Retromanager can be performed via the main menu
@@ -43,6 +47,5 @@ Long Term Goals -
 7. Implement smart auto update 
 8. Implement smart auto management (auto update specific packages, pull code, TBC)
 9. More to come
-
 ## Notice to users
 Until otherwise mentioned on this repo. This software is in beta. 
