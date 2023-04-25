@@ -49,3 +49,17 @@ Long Term Goals -
 9. More to come
 ## Notice to users
 Until otherwise mentioned on this repo. This software is in beta. 
+
+## License
+
+* Copyright (C) Vithusel Services - All Rights Reserved
+* Unauthorized use, modification or distribution of this Software / Scripts, via any medium is strictly prohibited. 
+* All content within this repository are proprietary and confidential. 
+* All requests to be sent to Vithurshan Selvarajah <vit@vithuselservices.co.uk>
+
+
+## Disclaimer
+
+Several components of this software / script call home to update and provide metrics.
+
+For support, email support@vithuselservices.co.uk
