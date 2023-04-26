@@ -36,9 +36,10 @@ while true; do
       apt update
       ;;
     U )
-      result=$(echo "$pendingupdates")
-      display_result "Availible Updates"
+      result=$(apt list --upgradable | awk -F/ '{print $1, $2}')
+      display_result "Available Updates"
       ;;
+
     N )
       apt upgrade -y
       ;;
