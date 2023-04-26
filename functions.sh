@@ -109,11 +109,19 @@ display_tail "Installing Updates"
 }
 
 install_if_not() {
-if ! dpkg-query -W -f='${Status}' "${1}" | grep -q "ok installed"
-then
-    apt-get update -q4 & apt-get install "${1}" -y
-fi
+  package_name="$1"
+  if ! dpkg-query -W -f='${Status}' "${package_name}" 2>/dev/null | grep -q "ok installed"; then
+    echo "Installing ${package_name}..."
+    if ! sudo apt-get update -qq && sudo apt-get install -y "${package_name}" 1>/dev/null; then
+      echo "Failed to install ${package_name}. Exiting."
+      exit 1
+    fi
+    echo "Successfully installed ${package_name}."
+  else
+    echo "${package_name} is already installed."
+  fi
 }
+
 
 clone_repo() {
   if ! git clone $1; then
