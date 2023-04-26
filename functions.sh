@@ -1,7 +1,6 @@
 # Retro Manager © - 2023, https://vithuselservices.co.uk
 
 # VARIABLES
-#Get Script name and path
 script_name=`basename $0`
 script_path=$(dirname $(readlink -f $0))
 script_path_with_name="$script_path/$script_name"
@@ -14,8 +13,6 @@ pendingupdates=`apt-get -q -y --ignore-hold --allow-change-held-packages --allow
 gofrprepo=https://api.github.com/repos/fatedier/frp/releases/latest
 tmp=/tmp
 backtitle="Retro Manager © - 2023, https://vithuselservices.co.uk"
-
-#Repo Variables
 mainrepo=https://git.vithuselservices.co.uk/vithusel/retromanager.git
 
 # FUNCTIONS
@@ -33,10 +30,7 @@ display_consent() {
     --no-collapse \
     --yesno "$consent" 7 60
 
-# Get exit status
-# 0 means user hit [yes] button.
-# 1 means user hit [no] button.
-# 255 means user hit [Esc] key.
+
 response=$?
 if [ "$response" == "0" ]; then
     echo "Accepted"
@@ -52,14 +46,9 @@ display_apphostserver() {
     --no-collapse \
     --yesno "$message" 7 60
 
-# Get exit status
-# 0 means user hit [yes] button.
-# 1 means user hit [no] button.
-# 255 means user hit [Esc] key.
 response=$?
 }
 
-# root test function
 is_root() {
     if [[ "$EUID" -ne 0 ]]
     then
@@ -69,7 +58,6 @@ is_root() {
     fi
 }
 
-# Current session user root check
 root_check() {
 if ! is_root
 then
@@ -94,7 +82,6 @@ exit 1
 fi
 }
 
-# Current session user root check
 install_complete() {
 result=$(echo "Install Complete
 
@@ -116,13 +103,11 @@ clear
 exit 1
 }
 
-# Install Updates
 install_update() {
 result=$(apt upgrade -y)
 display_tail "Installing Updates"
 }
 
-# Install_if_not program
 install_if_not() {
 if ! dpkg-query -W -f='${Status}' "${1}" | grep -q "ok installed"
 then
@@ -134,9 +119,25 @@ clone_repo() {
     git clone $1
 }
 
-# Github Release Downloader
 download_release() {
-spruce_type=$2
-download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
-wget -O $tmp/$3 $download_url
+  spruce_type=$2
+  download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
+  if [[ -z "$download_url" ]]; then
+    echo "Error: no matching asset found for type $spruce_type"
+    return 1
+  fi
+  wget -q -O $tmp/$3 $download_url
+  if [[ $? -ne 0 ]]; then
+    echo "Error: failed to download asset $download_url"
+    return 1
+  fi
+  if [[ "$3" == *.tar.gz || "$3" == *.tgz ]]; then
+    tar -zxf $tmp/$3 -C $tmp/
+  elif [[ "$3" == *.zip ]]; then
+    unzip -qq $tmp/$3 -d $tmp/
+  else
+    echo "Error: unknown file format for $3"
+    return 1
+  fi
 }
+
