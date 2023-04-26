@@ -116,28 +116,33 @@ fi
 }
 
 clone_repo() {
-    git clone $1
+  if ! git clone $1; then
+    dialog --title "Error" --msgbox "Failed to clone repository $1" 0 0
+    return 1
+  fi
 }
 
 download_release() {
   spruce_type=$2
   download_url=$(curl -s $1 | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
   if [[ -z "$download_url" ]]; then
-    echo "Error: no matching asset found for type $spruce_type"
+    dialog --title "Error" --msgbox "No matching asset found for type $spruce_type" 0 0
     return 1
   fi
-  wget -q -O $tmp/$3 $download_url
+  filename=$(basename "$download_url")
+  wget -q -O $tmp/$filename $download_url
   if [[ $? -ne 0 ]]; then
-    echo "Error: failed to download asset $download_url"
+    dialog --title "Error" --msgbox "Failed to download asset $download_url" 0 0
     return 1
   fi
-  if [[ "$3" == *.tar.gz || "$3" == *.tgz ]]; then
-    tar -zxf $tmp/$3 -C $tmp/
-  elif [[ "$3" == *.zip ]]; then
-    unzip -qq $tmp/$3 -d $tmp/
+  if [[ "$filename" == *.tar.gz || "$filename" == *.tgz ]]; then
+    tar -zxf $tmp/$filename -C $tmp/
+  elif [[ "$filename" == *.zip ]]; then
+    unzip -qq $tmp/$filename -d $tmp/
   else
-    echo "Error: unknown file format for $3"
+    dialog --title "Error" --msgbox "Unknown file format for $filename" 0 0
     return 1
   fi
 }
+
 
