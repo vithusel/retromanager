@@ -2,7 +2,7 @@
 
 # Retro Manager © - 2023, https://vithuselservices.co.uk
 
-    source <(curl -s https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/functions.sh)
+    source functions.sh
 
     application=GoFRP
     consent=$(echo Do you have a AMD64 Machine?)
