@@ -16,10 +16,11 @@ wget https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/main/functio
 
 sudo chmod +x functions.sh
 
-root_check
-
 source functions.sh
 
+
+
+root_check
 install_if_not dialog
 install_if_not git
 
