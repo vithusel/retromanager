@@ -18,11 +18,8 @@ sudo chmod +x functions.sh
 
 source functions.sh
 
-
-
 root_check
-install_if_not dialog
-install_if_not git
+sudo apt install dialog git -y
 
         consent=$(echo Prior to install this. Please ensure you have read the terms of use on the readme. This software is in beta)
         display_consent 
