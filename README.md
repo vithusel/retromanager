@@ -1,5 +1,5 @@
 
-![Logo]([misc/retromanager.png])
+![Logo](misc/retromanager.png)
 
 
 # RetroManager
