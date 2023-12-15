@@ -1,5 +1,5 @@
 
-![Logo](https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/e80b7de95fbb830a89b78e73d9d654d8fddf289b/misc/retromanager.png)
+![Logo]([https://git.vithuselservices.co.uk/vithusel/retromanager/-/raw/e80b7de95fbb830a89b78e73d9d654d8fddf289b/misc/retromanager.png](https://github.com/vithusel/retromanager/blob/main/misc/retromanager.png?raw=true))
 
 
 # RetroManager
